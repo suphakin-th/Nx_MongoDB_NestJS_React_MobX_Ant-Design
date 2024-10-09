@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { StockModule } from './stock/stock.module';
-import { ConfigModule } from './config/config.module'; // Import your ConfigModule
+import { StocksModule } from './stocks/stocks.module';
 
 @Module({
-  imports: [
-    ConfigModule, // Add the ConfigModule here
-    MongooseModule.forRoot(process.env.MONGO_URI as string),
-    StockModule,
-  ],
-  controllers: [],
-  providers: [],
+    imports: [
+        MongooseModule.forRoot('mongodb://localhost/stock_management'),
+        StocksModule,
+    ],
 })
 export class AppModule {}
